@@ -1,0 +1,32 @@
+{{- $page := .page -}}
+{{- $ctx := .ctx -}}
+{{- $href := $page.RelPermalink -}}
+{{- with $page.Params.link -}}{{- $href = . -}}{{- end -}}
+<div class="post-wrapper text-card-wrapper">
+  <article class="post-wrap text-card" data-aos="{{ $ctx.Site.Params.animation.options.home.post }}">
+    <a class="text-card-link" href="{{ $href }}" aria-label="{{ $page.Title }}"{{ if $page.Params.link }} target="_blank" rel="noopener noreferrer"{{ end }}>
+      <h2 class="text-card-title">{{ $page.Title }}</h2>
+      <div class="text-card-meta">
+        <span class="text-card-meta-group">
+          <span class="text-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M7 3v4m10-4v4M4 11h16"/></svg></span>
+          <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format $ctx.Site.Params.dateFormat }}</time>
+        </span>
+        {{- with $page.Params.categories -}}
+        <span class="text-card-meta-group">
+          <span class="text-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v18M5 17h14"/></svg></span>
+          <span>{{ delimit . " / " }}</span>
+        </span>
+        {{- end -}}
+        {{- with $page.Params.tags -}}
+        <span class="text-card-meta-group text-card-tags">
+          <span class="text-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="m10 3-4 18M18 3l-4 18M4 9h17M2 15h17"/></svg></span>
+          <span>{{ replace (delimit . " / ") "CSharp" "C#" }}</span>
+        </span>
+        {{- end -}}
+      </div>
+      <p class="text-card-summary">{{ $page.Params.description | default ($page.Summary | plainify) | plainify | truncate 300 }}</p>
+      <div class="text-card-reading"><span>{{ i18n "post.count" $page.WordCount }}</span><span aria-hidden="true">/</span><span>{{ i18n "post.time" $page.ReadingTime }}</span></div>
+      <span class="text-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
+    </a>
+  </article>
+</div>

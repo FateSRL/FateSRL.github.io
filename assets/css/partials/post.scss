@@ -1,0 +1,368 @@
+.post-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.post-wrap {
+  width: 100%;
+  height: 232px;
+  margin-bottom: 32px;
+  position: relative;
+  border-radius: $post-radius;
+  background: var(--color-wrap);
+  display: flex;
+  transition: 0.3s;
+
+  @media #{$mg-normal} {
+    flex-direction: column !important;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+
+  &.right {
+    flex-direction: row-reverse;
+  }
+}
+
+[data-theme="dark"] .post-wrap-left,
+[data-theme="dark"] .post-wrap-right {
+  box-shadow: var(--shadow-card);
+}
+
+.post-wrapper {
+  border-radius: $post-radius;
+  transition: 0.3s;
+
+  .aos-animate {
+    transition-property: initial !important;
+
+    @media #{$mq-normal} {
+      &:hover {
+        box-shadow: var(--shadow-card-hover);
+      }
+    }
+  }
+
+  img {
+    will-change: transform;
+  }
+
+  @media #{$mq-normal} {
+    &:hover {
+      transform: scale(1.01);
+
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.post-info {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: flex-end;
+  margin: 4px 0;
+
+  span {
+    font-size: 14px;
+    color: var(--grey-7);
+    margin: 0 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @media #{$mg-normal} {
+      margin: 0 8px;
+    }
+  }
+
+  @if $show_update_time {
+    > span {
+      @media #{$mg-extra-large} {
+        margin: 0 8px;
+      }
+      @media #{$mg-large} {
+        margin: 0 6px;
+      }
+      @media #{$mq-mobile} {
+        margin: 0 8px;
+      }
+      > span {
+        @media #{$mg-extra-large} {
+          margin: 0 6px;
+        }
+        @media #{$mg-large} {
+          margin: 0 4px;
+        }
+        @media #{$mq-mobile} {
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+}
+
+.post-article {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  line-height: 32px;
+  font-size: 15px;
+  color: var(--grey-7);
+
+  a {
+    color: var(--color-link);
+  }
+}
+
+.post-cover {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  min-height: 95px;
+  background-color: var(--color-wrap);
+  flex-shrink: 0;
+  pointer-events: none;
+
+  @media #{$mg-normal} {
+    width: 100%;
+    height: 45%;
+  }
+
+  img {
+    display: block;
+    opacity: 0;
+    transition: 0.2s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+    &.lazyloaded {
+      opacity: 1;
+      animation: blur 0.8s forwards;
+    }
+  }
+
+  &.left {
+    @media #{$mq-normal} {
+      border-radius: $post-radius 0 0 $post-radius;
+      -webkit-clip-path: polygon(0 0, 92% 0%, 100% 100%, 0% 100%);
+      clip-path: polygon(0 0, 92% 0%, 100% 100%, 0% 100%);
+    }
+
+    @media #{$mg-normal} {
+      border-radius: $post-radius $post-radius 0 0;
+    }
+  }
+
+  &.right {
+    @media #{$mq-normal} {
+      border-radius: 0 $post-radius $post-radius 0;
+      -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 8% 100%);
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 8% 100%);
+    }
+
+    @media #{$mg-normal} {
+      border-radius: $post-radius $post-radius 0 0;
+    }
+  }
+}
+
+.post-title {
+  padding: 20px 0;
+  color: var(--color-link);
+  font-size: 25px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s;
+}
+
+.post-sticky {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 35px;
+  background: var(--color-sticky);
+  color: var(--red-1);
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 1;
+  transition: 0.3s;
+  border-top-left-radius: $post-radius;
+  border-bottom-right-radius: $post-radius;
+
+  &:before {
+    margin-right: 4px;
+  }
+}
+
+// Fuwari-style text-only cards. Keep the upstream Reimu layout elsewhere.
+.post-wrapper.text-card-wrapper {
+  &:hover { transform: none; }
+}
+
+.post-wrap.text-card {
+  --card-surface: #fff;
+  --card-title: #303641;
+  --card-copy: #626b77;
+  --card-meta: #737e8d;
+  --card-accent: #6599cf;
+  --card-icon: #edf3f9;
+  --card-arrow: #edf3f9;
+  --card-arrow-hover: #e2edf8;
+  display: block;
+  height: auto;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--card-surface);
+  box-shadow: 0 3px 18px rgba(30, 45, 65, .035);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+.text-card-link {
+  display: block;
+  position: relative;
+  min-width: 0;
+  padding: 27px 98px 25px 30px;
+  color: var(--card-copy);
+  text-decoration: none;
+
+  &:hover { color: var(--card-copy); }
+  &:focus-visible { outline: 3px solid var(--card-accent); outline-offset: -3px; border-radius: 18px; }
+}
+
+.text-card-title {
+  position: relative;
+  margin: 0 0 16px;
+  padding: 0 0 0 18px;
+  color: var(--card-title);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -.02em;
+  overflow-wrap: anywhere;
+
+  &::before { content: ""; position: absolute; left: 0; top: .25em; height: 1em; width: 4px; border-radius: 4px; background: var(--card-accent); }
+}
+
+.text-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 19px;
+  color: var(--card-meta);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.text-card-meta-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.text-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  color: var(--card-accent);
+  background: var(--card-icon);
+
+  svg { display: block; width: 19px; height: 19px; }
+}
+
+.text-card-summary {
+  margin: 20px 0 19px;
+  color: var(--card-copy);
+  font-size: 15px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.text-card-reading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  color: var(--card-meta);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.text-card-arrow {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  bottom: 16px;
+  width: 52px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent);
+  background: var(--card-arrow);
+  transition: background .2s;
+
+  svg { width: 22px; height: 22px; }
+}
+
+.text-card-link:hover .text-card-arrow { background: var(--card-arrow-hover); }
+
+html[data-theme="dark"] .post-wrap.text-card {
+  --card-surface: #191e25;
+  --card-title: #e6e8ec;
+  --card-copy: #bdc3cd;
+  --card-meta: #98a2b2;
+  --card-accent: #88b8f0;
+  --card-icon: #2a3646;
+  --card-arrow: #2a3646;
+  --card-arrow-hover: #34465b;
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  .post-wrap.text-card { height: auto; margin-bottom: 18px; border-radius: 16px; }
+  .text-card-link { padding: 21px 56px 20px 20px; }
+  .text-card-title { padding-left: 14px; margin-bottom: 14px; font-size: 20px; line-height: 1.55; }
+  .text-card-meta { gap: 9px 13px; font-size: 11px; }
+  .text-card-meta-group { gap: 7px; }
+  .text-card-icon { width: 26px; height: 26px; flex-basis: 26px; border-radius: 6px; }
+  .text-card-icon svg { width: 17px; height: 17px; }
+  .text-card-summary { margin-block: 17px; font-size: 13px; }
+  .text-card-reading { font-size: 11px; gap: 7px; }
+  .text-card-arrow { top: 12px; bottom: 12px; right: 10px; width: 30px; border-radius: 10px; }
+  .text-card-arrow svg { width: 17px; height: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-card-wrapper, .text-card-arrow { transition: none !important; }
+}
