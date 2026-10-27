@@ -1,0 +1,8 @@
+{{- define "main" -}}
+  {{- $ctx := . -}}
+  {{- $paginator := .Paginate .RegularPages.ByWeight -}}
+  {{- range $index, $page := $paginator.Pages -}}
+    {{- partial "post.html" (dict "index" $index "ctx" $ctx "page" $page) -}}
+  {{- end -}}
+  {{- partial "pagination.html" . -}}
+{{- end -}}

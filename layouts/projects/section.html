@@ -1,6 +1,0 @@
-{{ define "main" }}
-<div class="container inner-page">
-  <header class="page-heading"><h1>项目</h1><p>做过的项目与实验，记录实现过程和设计思路。</p></header>
-  <div class="post-list">{{ range .RegularPages.ByWeight }}{{ partial "content-entry.html" . }}{{ end }}</div>
-</div>
-{{ end }}

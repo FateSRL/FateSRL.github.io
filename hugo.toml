@@ -1,39 +1,87 @@
 baseURL = 'https://fatesrl.github.io/'
+theme = 'reimu'
 locale = 'zh-CN'
-defaultContentLanguage = 'zh'
-title = '葛广一的个人博客'
+defaultContentLanguage = 'zh-cn'
+title = '葛广一的博客'
 timeZone = 'Asia/Shanghai'
 enableRobotsTXT = true
-disableKinds = ['taxonomy', 'term']
+hasCJKLanguage = true
 
-[params]
-  author = '葛广一'
-  description = '葛广一的个人博客，记录项目实践、课程学习与算法训练。'
-  email = 'geguangyi@sjtu.edu.cn'
-  github = 'https://github.com/FateSRL'
-  codeforces = 'https://codeforces.com/profile/fatesrl'
+[pagination]
+  pagerSize = 6
 
-[[menus.main]]
-  name = '首页'
-  pageRef = '/'
-  weight = 1
-[[menus.main]]
-  name = '项目'
-  pageRef = '/projects'
-  weight = 2
-[[menus.main]]
-  name = '学习'
-  pageRef = '/learning'
-  weight = 3
-[[menus.main]]
-  name = '关于'
-  pageRef = '/about'
-  weight = 4
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
 
 [markup.goldmark.renderer]
-  unsafe = false
+  unsafe = true
 [markup.highlight]
-  style = 'github'
+  guessSyntax = true
+  noClasses = false
+
 [caches.images]
   dir = ':cacheDir/images'
 
+[params]
+  author = '葛广一'
+  email = 'geguangyi@sjtu.edu.cn'
+  description = '记录项目实践、课程学习与算法训练。'
+  mainSections = ['projects', 'learning']
+  banner = 'images/banner.webp'
+  avatar = 'fatesrl.png'
+  widgets = ['category', 'tag']
+  toc = true
+  icon_font = '4552607_ex15nbittbh'
+
+  [[params.menu]]
+    name = 'home'
+    url = ''
+  [[params.menu]]
+    name = 'projects'
+    url = 'projects/'
+    icon = false
+  [[params.menu]]
+    name = 'learning'
+    url = 'learning/'
+    icon = false
+  [[params.menu]]
+    name = 'about'
+    url = 'about/'
+
+  [params.subtitle]
+    text = '记录项目实践、课程学习与算法训练。'
+    [params.subtitle.typing]
+      enable = false
+
+  [params.social]
+    github = 'https://github.com/FateSRL'
+    email = 'mailto:geguangyi@sjtu.edu.cn'
+
+  [params.sort_order]
+    home = 'date-reverse'
+    archive = 'date-reverse'
+
+  [params.sidebar]
+    position = 'right'
+    menu = true
+
+  [params.footer]
+    since = 2026
+    powered = true
+    count = false
+    busuanzi = false
+
+  [params.firework]
+    enable = false
+  [params.reimu_cursor]
+    enable = false
+  [params.preloader]
+    enable = false
+  [params.pace]
+    enable = false
+  [params.font]
+    enable = false
+  [params.dark_mode]
+    button = true
+    type = false

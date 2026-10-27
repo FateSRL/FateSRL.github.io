@@ -3,12 +3,9 @@ title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 description = ''
 date = '{{ .Date }}'
 lastmod = '{{ .Date }}'
-category = '课程学习'
-kind_label = '课程'
-icon = 'book'
+categories = ['课程学习']
 status = '学习记录'
 tags = []
-show_update = true
 draft = true
 +++
 

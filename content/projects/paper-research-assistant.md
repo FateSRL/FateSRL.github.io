@@ -5,6 +5,7 @@ date = 2026-10-26
 lastmod = 2026-10-26
 weight = 1
 category = 'AI 应用'
+categories = ['项目']
 icon = 'spark'
 status = '开发中'
 tags = ['Python', 'RAG', 'Qdrant', 'SQLite']
@@ -12,6 +13,8 @@ repo = 'https://github.com/FateSRL/paper-research-assistant'
 featured = true
 show_update = true
 +++
+
+**状态：开发中。** [GitHub 源码](https://github.com/FateSRL/paper-research-assistant)
 
 ## 项目概览
 

@@ -5,11 +5,14 @@ date = 2026-10-26
 lastmod = 2026-10-26
 weight = 1
 category = '课程学习'
+categories = ['课程学习']
 kind_label = '课程'
 icon = 'book'
 status = '待补充'
 tags = ['Agent', '课程学习']
 show_update = false
+[build]
+list = 'local'
 +++
 
 ## hello-agents-study

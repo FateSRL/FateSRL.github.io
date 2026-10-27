@@ -5,6 +5,7 @@ date = 2026-10-26
 lastmod = 2026-10-26
 weight = 2
 category = '算法训练'
+categories = ['算法训练']
 kind_label = '算法'
 icon = 'code'
 status = '平台入口'
@@ -12,6 +13,8 @@ tags = ['Codeforces', '算法训练']
 external = 'https://codeforces.com/profile/fatesrl'
 external_label = '访问 Codeforces'
 show_update = false
+[build]
+list = 'local'
 +++
 
 ## 算法训练

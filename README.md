@@ -1,73 +1,67 @@
-# 葛广一 · Hugo 个人主页
+# 葛广一的博客
 
-以项目和学习记录为主的中文个人博客。无主题子模块，无 Node 依赖，使用 Hugo 0.168.0 构建。
+线上地址：<https://fatesrl.github.io/>
 
-## 页面
+源码仓库：<https://github.com/FateSRL/FateSRL.github.io>
 
-- 首页：简短介绍、最近更新与学习入口，使用统一的文章列表布局。
-- 项目：统一列表展示；论文调研助手排第一，其次是 MIT 6.5840 分布式系统实验、2D 动作游戏。
-- 学习：课程学习和算法训练，可筛选。
+网站直接使用 [Reimu](https://github.com/D-Sketon/hugo-theme-reimu) 官方 Hugo 主题，保留原主题的插画横幅、文章卡片、侧栏、阅读页面和深浅色切换。主题以 Git submodule 固定到一个提交，不修改上游主题文件。主题及所附资源的许可、署名保留在 `themes/reimu/` 中。
+
+## 页面与内容
+
+- 首页：项目记录，使用原主题文章列表。
+- 项目：论文调研助手、MIT 6.5840 分布式系统实验、2D 动作游戏，按 `weight` 排序。
+- 学习：hello-agents-study 文字占位、Codeforces 平台入口。
 - 关于：教育背景、课程成绩、竞赛经历、研究兴趣和联系方式。
-- 简历：在线查看，浏览器“打印 / 保存 PDF”。
+- 简历：原简历内容的在线 Markdown 页面。
 
-项目介绍沿用所提供的简历。6.5840 不提供源码链接；hello-agents-study 为待补充的课程条目，没有仓库链接；Codeforces 仅提供已确认的个人主页入口。
+6.5840 仅展示简历中的项目介绍，遵循课程要求不提供源码。课程尚未上传仓库，因此没有课程仓库链接。公开联系方式为 `geguangyi@sjtu.edu.cn`。
 
 ## 本地预览
 
-安装 Hugo 0.168.0（普通版即可），在本目录运行：
+需要 **Hugo Extended 0.168.0**。首次克隆时一并下载主题：
 
 ```powershell
-hugo server --bind 127.0.0.1
+git clone --recurse-submodules https://github.com/FateSRL/FateSRL.github.io.git
+cd FateSRL.github.io
+hugo server
 ```
 
-访问终端显示的本地地址。生成生产网站：
+如果已经克隆过仓库：
+
+```powershell
+git submodule update --init --recursive
+```
+
+生成生产网站：
 
 ```powershell
 hugo build --gc --minify
 ```
 
-## 发布至 GitHub Pages
+GitHub Pages 已使用 GitHub Actions 自动构建，工作流会安装 Hugo Extended 并下载主题 submodule。向 `main` 推送内容后自动发布。
 
-1. 使用主页仓库：https://github.com/FateSRL/FateSRL.github.io 。
-2. 将本目录内的源文件提交到仓库的 `main` 分支，包含 `.github/workflows/hugo.yaml`。不提交 `public/`。
-3. 仓库 Settings → Pages → Build and deployment → Source，选择 **GitHub Actions**。
-4. 在 Actions 中运行 **Build and deploy Hugo site**，或向 main 提交一次修改。
-5. 部署成功后访问 `https://fatesrl.github.io/`。
+## 更新位置
 
-主页仓库：https://github.com/FateSRL/FateSRL.github.io
-
-线上地址：https://fatesrl.github.io/
-
-向 main 分支推送修改后，GitHub Actions 会自动构建并发布。部署状态可在仓库 Actions 中查看。
-
-## 日常更新
-
-| 要修改的内容 | 文件 |
+| 内容 | 文件 |
 | --- | --- |
-| 学校、成绩、奖项、首页简介 | `data/profile.json` |
-| 邮箱、GitHub、导航、站点地址 | `hugo.toml` |
-| 项目介绍与状态 | `content/projects/*.md` |
+| 站点标题、作者、邮箱、菜单和主题开关 | `hugo.toml` |
+| 教育、成绩、竞赛与个人介绍 | `content/about.md` |
+| 在线简历 | `content/resume.md` |
+| 项目介绍 | `content/projects/*.md` |
 | 课程与算法记录 | `content/learning/*.md` |
-| 颜色、间距与响应式布局 | `assets/css/main.css` |
+| 头像 | `static/avatar/fatesrl.png` |
 
-新增一条课程记录：
+横幅使用主题自带的 `images/banner.webp`，头像使用个人 GitHub 头像。需要更换图片时，将自己的图片放入 `static/`，再修改 `hugo.toml` 中的路径即可。
+
+新增课程记录或项目：
 
 ```powershell
 hugo new content learning/my-course.md
-```
-
-新增一个项目：
-
-```powershell
 hugo new content projects/my-project.md
 ```
 
-新条目默认为草稿。填好内容后，将 `draft = true` 改为 `false`；更新已有内容时同步修改 `lastmod`。首页自动显示 `show_update = true` 的最近五条记录，按 `lastmod` 排序。课程和算法占位条目目前设为 false，以免被当成学习进展。
+新条目默认为草稿，填写后将 `draft = true` 改为 `false`。使用 `categories = ['课程学习']` 或 `categories = ['算法训练']` 设置学习分类。两个现有占位条目用 `[build] list = 'local'` 只在学习栏目显示；填入正式记录后可移除该配置，让内容进入首页。
 
-课程记录使用 `category = '课程学习'`，算法记录使用 `category = '算法训练'`。课程上传仓库后，可在课程 Markdown 的 front matter 中增加：
+项目栏目按 `weight` 从小到大排列，论文调研助手为 1。首页使用原主题的时间倒序列表。标签 `CSharp` 对应 C#，用于避免 `#` 被浏览器当成 URL 片段。
 
-```toml
-repo = 'https://github.com/FateSRL/实际仓库名'
-```
-
-公开联系方式仅使用 `geguangyi@sjtu.edu.cn`。未加入简历之外的绩点、比赛年份、课程进度或项目指标。
+网站只增加了一个调用原主题卡片和分页组件的 `layouts/section.html`，使“项目”“学习”栏目支持独立列表。依赖库使用主题自带的本地文件；主题图标使用原配置的图标字体。鼠标烟花、特殊光标和加载遮罩已通过官方配置关闭。

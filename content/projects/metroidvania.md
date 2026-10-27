@@ -5,13 +5,16 @@ date = 2026-10-26
 lastmod = 2026-10-26
 weight = 3
 category = '游戏开发'
+categories = ['项目']
 icon = 'game'
 status = '本科毕业设计'
-tags = ['C#', '有限状态机', '战斗系统']
+tags = ['CSharp', '有限状态机', '战斗系统']
 repo = 'https://github.com/FateSRL/Metroidvania'
 featured = true
 show_update = true
 +++
+
+[GitHub 源码](https://github.com/FateSRL/Metroidvania)
 
 ## 项目概览
 

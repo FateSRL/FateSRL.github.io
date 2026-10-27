@@ -4,12 +4,10 @@ description = ''
 date = '{{ .Date }}'
 lastmod = '{{ .Date }}'
 weight = 10
-category = 'AI 应用'
-icon = 'spark'
+categories = ['项目']
 status = '开发中'
 tags = []
 repo = ''
-show_update = true
 draft = true
 +++
 

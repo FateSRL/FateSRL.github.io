@@ -5,6 +5,7 @@ date = 2026-10-26
 lastmod = 2026-10-26
 weight = 2
 category = '分布式系统'
+categories = ['项目']
 icon = 'nodes'
 status = '课程实验'
 tags = ['Go', 'Raft', 'RPC', 'KV Store']
@@ -12,6 +13,8 @@ source_note = '遵循课程要求，实验源码暂不公开。'
 featured = true
 show_update = true
 +++
+
+> 遵循课程要求，实验源码暂不公开。
 
 ## 项目概览
 
