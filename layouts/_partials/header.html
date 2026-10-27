@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="葛广一 首页"><span class="brand-name">葛广一</span><span class="brand-handle">个人博客</span></a>
+    <nav class="main-nav" id="main-nav" aria-label="主导航">
+      {{ range .Site.Menus.main }}
+      {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+      <a href="{{ .URL }}"{{ if $active }} class="active" aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <div class="header-actions"><a class="icon-link github-link" href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub 个人主页">{{ partial "icon.html" "github" }}</a><button class="menu-toggle" aria-label="展开导航" aria-controls="main-nav" aria-expanded="false"><span></span><span></span></button></div>
+  </div>
+</header>

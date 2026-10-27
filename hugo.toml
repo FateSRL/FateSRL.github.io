@@ -1,0 +1,39 @@
+baseURL = 'https://fatesrl.github.io/'
+locale = 'zh-CN'
+defaultContentLanguage = 'zh'
+title = '葛广一的个人博客'
+timeZone = 'Asia/Shanghai'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  author = '葛广一'
+  description = '葛广一的个人博客，记录项目实践、课程学习与算法训练。'
+  email = 'geguangyi@sjtu.edu.cn'
+  github = 'https://github.com/FateSRL'
+  codeforces = 'https://codeforces.com/profile/fatesrl'
+
+[[menus.main]]
+  name = '首页'
+  pageRef = '/'
+  weight = 1
+[[menus.main]]
+  name = '项目'
+  pageRef = '/projects'
+  weight = 2
+[[menus.main]]
+  name = '学习'
+  pageRef = '/learning'
+  weight = 3
+[[menus.main]]
+  name = '关于'
+  pageRef = '/about'
+  weight = 4
+
+[markup.goldmark.renderer]
+  unsafe = false
+[markup.highlight]
+  style = 'github'
+[caches.images]
+  dir = ':cacheDir/images'
+

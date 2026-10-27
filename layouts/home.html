@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="container blog-home">
+  <header class="blog-intro">
+    <h1>葛广一的个人博客</h1>
+    <p>记录项目实践、课程学习与算法训练。</p>
+    <div class="intro-links">
+      <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span>/</span><a href="{{ .Site.Params.codeforces }}" target="_blank" rel="noopener noreferrer">Codeforces</a>
+      <span>/</span><a href="mailto:{{ .Site.Params.email }}">邮箱</a>
+    </div>
+  </header>
+  {{ $updates := first 5 ((where .Site.RegularPages "Params.show_update" true).ByLastmod.Reverse) }}
+  {{ if $updates }}
+  <section class="blog-section" aria-labelledby="updates-title">
+    <div class="list-heading"><h2 id="updates-title">最近更新</h2><span>项目与学习记录</span></div>
+    <div class="post-list">
+      {{ range $updates.GroupByLastmod "2006-01-02" "desc" }}
+        {{ range .Pages.ByWeight }}{{ partial "content-entry.html" . }}{{ end }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+  <section class="blog-section learning-shortcuts" aria-labelledby="learning-title">
+    <div class="list-heading"><h2 id="learning-title">学习入口</h2><a href="{{ "learning/" | relURL }}">全部记录 →</a></div>
+    <ul>
+      <li><span class="shortcut-category">课程学习</span><a href="{{ "learning/hello-agents-study/" | relURL }}">hello-agents-study</a><span class="shortcut-note">待补充</span></li>
+      <li><span class="shortcut-category">算法训练</span><a href="{{ .Site.Params.codeforces }}" target="_blank" rel="noopener noreferrer">Codeforces · fatesrl</a>{{ partial "icon.html" "external" }}</li>
+    </ul>
+  </section>
+</div>
+{{ end }}

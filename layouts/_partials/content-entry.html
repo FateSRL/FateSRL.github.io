@@ -1,0 +1,6 @@
+<article class="post-entry">
+  <div class="post-meta"><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006.01.02" }}</time><span>·</span><span>{{ if eq .Section "projects" }}项目{{ else }}{{ .Params.category }}{{ end }}</span>{{ with .Params.status }}<span>·</span><span>{{ . }}</span>{{ end }}</div>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p>{{ .Description }}</p>
+  <div class="post-bottom"><div class="tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div><a class="read-more" href="{{ .RelPermalink }}">阅读详情 →</a></div>
+</article>

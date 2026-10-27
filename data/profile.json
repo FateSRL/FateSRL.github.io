@@ -1,0 +1,51 @@
+{
+  "name": "葛广一",
+  "romanized": "GE GUANGYI",
+  "intro": "我是葛广一，目前就读于上海交通大学。这里记录我的项目实践、课程学习与算法训练。",
+  "education": [
+    {
+      "period": "2026.09 — 至今",
+      "school": "上海交通大学",
+      "degree": "硕士研究生",
+      "subject": "区块链方向"
+    },
+    {
+      "period": "2022.09 — 2026.07",
+      "school": "济南大学",
+      "degree": "本科",
+      "subject": "计算机科学与技术"
+    }
+  ],
+  "courses": [
+    {
+      "name": "线性代数",
+      "score": 95
+    },
+    {
+      "name": "离散数学",
+      "score": 92
+    },
+    {
+      "name": "程序设计基础",
+      "score": 92
+    },
+    {
+      "name": "数据结构",
+      "score": 89
+    }
+  ],
+  "english": "CET-6 · 531",
+  "awards": [
+    {
+      "title": "“华为杯”第 49 届 ACM-ICPC 国际大学生程序设计竞赛亚洲区域赛（昆明）",
+      "result": "铜牌",
+      "kind": "bronze"
+    },
+    {
+      "title": "第九届团体程序设计天梯赛全国总决赛",
+      "result": "团队二等奖",
+      "kind": "silver"
+    }
+  ],
+  "interests": "关注分布式系统与区块链相关研究，以及与大模型结合的交叉课题。"
+}

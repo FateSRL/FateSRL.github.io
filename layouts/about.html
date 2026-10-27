@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ $p := hugo.Data.profile }}
+<div class="container inner-page about-page">
+  <header class="page-heading"><h1>关于我</h1><p>{{ $p.intro }}</p></header>
+  <section class="about-section"><h2>教育背景</h2><div class="education-list">
+    {{ range $p.education }}<div class="education-item"><div class="education-top"><h3>{{ .school }}</h3><span>{{ .period }}</span></div><p>{{ .subject }} · {{ .degree }}</p></div>{{ end }}
+  </div></section>
+  <section class="about-section"><h2>竞赛经历</h2><div class="award-list">
+    {{ range $p.awards }}<div class="award-item"><p>{{ .title }}</p><span>{{ .result }}</span></div>{{ end }}
+  </div></section>
+  <section class="about-section"><h2>课程与成绩</h2><div class="course-scores">
+    {{ range $p.courses }}<div><span>{{ .name }}</span><span>{{ .score }} / 100</span></div>{{ end }}
+  </div><p class="english-score">英语：{{ $p.english }}</p></section>
+  <section class="about-section"><h2>研究兴趣</h2><p>{{ $p.interests }}</p></section>
+  <section class="about-section"><h2>联系方式</h2><ul class="about-links"><li>邮箱：<a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></li><li>GitHub：<a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">FateSRL</a></li><li><a href="{{ "resume/" | relURL }}">查看简历 →</a></li></ul></section>
+</div>
+{{ end }}

@@ -1,0 +1,7 @@
+{{ define "main" }}
+<div class="container inner-page">
+  <header class="page-heading"><h1>学习</h1><p>{{ .Description }}</p></header>
+  <div class="learning-filters" role="group" aria-label="筛选学习记录"><button class="selected" data-filter="all" aria-pressed="true">全部记录 <span>{{ len .RegularPages }}</span></button><button data-filter="课程学习" aria-pressed="false">课程学习</button><button data-filter="算法训练" aria-pressed="false">算法训练</button></div>
+  <div class="learning-entries">{{ range .RegularPages.ByWeight }}{{ partial "learning-card.html" . }}{{ end }}</div>
+</div>
+{{ end }}
